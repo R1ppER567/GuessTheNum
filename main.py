@@ -1,18 +1,18 @@
 import os
 import random
 import msg_consts
+from typing import Final
+
+EX_CHAR: Final = "q"
+NUM_RANGE: Final = (1, 10)  # [1, 10]
+ATTEMPTS: Final = 5
+YES_INPUT: Final = frozenset({"yes", "y", "1"})
+NO_INPUT: Final = frozenset({"no", "n", "0"})
 
 
-EX_CHAR = 'q'
-NUM_RANGE = (1, 10)  # [1, 10]
-ATTEMPTS = 5
-YES_INPUT = frozenset({"yes", 'y', '1'})
-NO_INPUT = frozenset({"no", 'n', '0'})
-
-
-def clear():
+def clear() -> None:
     """Clears the console screen depending on the OS."""
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system("cls" if os.name == "nt" else "clear")
 
 
 def get_user_guess() -> int:
@@ -29,10 +29,10 @@ def get_user_guess() -> int:
         print(msg_consts.DUMB_MSG)
 
 
-def play_game():
+def play_game() -> None:
     """Runs a single round of the game.
 
-    A random number is generated, and the user has a limited number of 
+    A random number is generated, and the user has a limited number of
     attempts to guess it.
     """
     target_number = random.randint(*NUM_RANGE)
@@ -49,11 +49,11 @@ def play_game():
             break
 
     clear()
-    print(msg_consts.LOSE_MSG) 
+    print(msg_consts.LOSE_MSG)
 
 
 def play_again() -> bool:
-    """Asks the user if they want to play again.
+    """Asks the user if he wants to play again.
 
     Returns:
         bool: True if the user wants to play again, False otherwise.
@@ -67,10 +67,10 @@ def play_again() -> bool:
             return False
 
 
-def main():
+def main() -> None:
     """Main game loop.
 
-    Clears the screen, starts the game, and asks the user if they 
+    Clears the screen, starts the game, and asks the user if they
     want to play again.
     """
     clear()
